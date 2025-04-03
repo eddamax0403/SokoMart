@@ -1,4 +1,4 @@
 package com.eddy.sokomart.navigation
 
-class Routes {
-}
+const val ROUT_HOME = "home"
+const val ROUT_ABOUT = "about"
