@@ -9,8 +9,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
@@ -86,150 +88,239 @@ fun ItemScreen(navController: NavController){
         )
         //end of TopAppbar
 
-        Image(
-            painter = painterResource(R.drawable.item),
-            contentDescription = "Item",
-            modifier = Modifier.fillMaxWidth().height(540.dp),
-            contentScale = ContentScale.FillWidth
-        )
-
-        //Searchbar
-        Spacer(modifier = Modifier.height(10.dp))
-
-
-        var search by remember { mutableStateOf("") }
-        OutlinedTextField(
-            value = search,
-            onValueChange = {search = it},
-            modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp),
-            leadingIcon = { Icon(imageVector = Icons.Default.Search, contentDescription = "")},
-            placeholder = { Text(text = "Search...") }
-        )
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Row
-        Row (modifier = Modifier.padding(start = 10.dp)){
+        Column (modifier = Modifier.verticalScroll(rememberScrollState())){
             Image(
-                painter = painterResource(R.drawable.home),
-                contentDescription = "Home",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                painter = painterResource(R.drawable.item),
+                contentDescription = "Item",
+                modifier = Modifier.fillMaxWidth().height(540.dp).verticalScroll(rememberScrollState()),
                 contentScale = ContentScale.FillWidth
             )
 
-            //Horizontal spacer
-            Spacer(modifier = Modifier.width(10.dp))
+            //Searchbar
+            Spacer(modifier = Modifier.height(10.dp))
 
-            Column (){
-                Text(
-                    text = "Men's Leather Jacket",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 20.sp
-                )
 
-                Text(
-                    text = "Casual Wear",
-                    fontSize = 15.sp
-                )
-
-                Text(
-                    text = "Before:Ksh.1800",
-                    fontSize = 15.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
-
-                Text(
-                    text = "Now:Ksh.1500",
-                    fontSize = 15.sp
-                )
-
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-
-                }
-            }
-
-        }
-    //end of row
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        //Row
-        Row (modifier = Modifier.padding(start = 10.dp)){
-            Image(
-                painter = painterResource(R.drawable.home),
-                contentDescription = "Home",
-                modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
-                contentScale = ContentScale.FillWidth
+            var search by remember { mutableStateOf("") }
+            OutlinedTextField(
+                value = search,
+                onValueChange = {search = it},
+                modifier = Modifier.fillMaxWidth().padding(start = 10.dp, end = 10.dp),
+                leadingIcon = { Icon(imageVector = Icons.Default.Search, contentDescription = "")},
+                placeholder = { Text(text = "Search...") }
             )
 
-            //Horizontal spacer
-            Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.height(10.dp))
 
-            Column (){
-                Text(
-                    text = "Men's Leather Jacket",
-                    fontWeight = FontWeight.ExtraBold,
-                    fontSize = 20.sp
+            //Row
+            Row (modifier = Modifier.padding(start = 10.dp)){
+                Image(
+                    painter = painterResource(R.drawable.home),
+                    contentDescription = "Home",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth
                 )
 
-                Text(
-                    text = "Casual Wear",
-                    fontSize = 15.sp
-                )
+                //Horizontal spacer
+                Spacer(modifier = Modifier.width(10.dp))
 
-                Text(
-                    text = "Before:Ksh.1800",
-                    fontSize = 15.sp,
-                    textDecoration = TextDecoration.LineThrough
-                )
+                Column (){
+                    Text(
+                        text = "Men's Leather Jacket",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp
+                    )
 
-                Text(
-                    text = "Now:Ksh.1500",
-                    fontSize = 15.sp
-                )
+                    Text(
+                        text = "Casual Wear",
+                        fontSize = 15.sp
+                    )
 
-                Row {
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
-                    Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                    Text(
+                        text = "Before:Ksh.1800",
+                        fontSize = 15.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
 
+                    Text(
+                        text = "Now:Ksh.1500",
+                        fontSize = 15.sp
+                    )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+
+                    }
                 }
 
+            }
+            //end of row
 
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row (modifier = Modifier.padding(start = 10.dp)){
+                Image(
+                    painter = painterResource(R.drawable.home),
+                    contentDescription = "Home",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth
+                )
+
+                //Horizontal spacer
+                Spacer(modifier = Modifier.width(10.dp))
+
+                Column (){
+                    Text(
+                        text = "Men's Leather Jacket",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp
+                    )
+
+                    Text(
+                        text = "Casual Wear",
+                        fontSize = 15.sp
+                    )
+
+                    Text(
+                        text = "Before:Ksh.1800",
+                        fontSize = 15.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+
+                    Text(
+                        text = "Now:Ksh.1500",
+                        fontSize = 15.sp
+                    )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+
+                    }
+
+
+
+                }
+            }
+            //end of row
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row (modifier = Modifier.padding(start = 10.dp)){
+                Image(
+                    painter = painterResource(R.drawable.home),
+                    contentDescription = "Home",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth
+                )
+
+                //Horizontal spacer
+                Spacer(modifier = Modifier.width(10.dp))
+
+                Column (){
+                    Text(
+                        text = "Men's Leather Jacket",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp
+                    )
+
+                    Text(
+                        text = "Casual Wear",
+                        fontSize = 15.sp
+                    )
+
+                    Text(
+                        text = "Before:Ksh.1800",
+                        fontSize = 15.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+
+                    Text(
+                        text = "Now:Ksh.1500",
+                        fontSize = 15.sp
+                    )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+
+                    }
+                }
 
             }
+            //end of row
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            //Row
+            Row (modifier = Modifier.padding(start = 10.dp)){
+                Image(
+                    painter = painterResource(R.drawable.home),
+                    contentDescription = "Home",
+                    modifier = Modifier.width(200.dp).height(150.dp).clip(shape = RoundedCornerShape(10.dp)),
+                    contentScale = ContentScale.FillWidth
+                )
+
+                //Horizontal spacer
+                Spacer(modifier = Modifier.width(10.dp))
+
+                Column (){
+                    Text(
+                        text = "Men's Leather Jacket",
+                        fontWeight = FontWeight.ExtraBold,
+                        fontSize = 20.sp
+                    )
+
+                    Text(
+                        text = "Casual Wear",
+                        fontSize = 15.sp
+                    )
+
+                    Text(
+                        text = "Before:Ksh.1800",
+                        fontSize = 15.sp,
+                        textDecoration = TextDecoration.LineThrough
+                    )
+
+                    Text(
+                        text = "Now:Ksh.1500",
+                        fontSize = 15.sp
+                    )
+
+                    Row {
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+                        Icon(imageVector = Icons.Default.Star, contentDescription = "", tint = Color.Green)
+
+                    }
+                }
+
+            }
+            //end of row
+
+
+
+
+
 
 
 
 
 
         }
-
-
-
-
-        //end of row
-
-
-
-
 
 
 
     }
-
-
-
-
-
-
-
-
 }
 
 @Preview(showBackground = true)

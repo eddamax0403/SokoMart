@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.R
+import com.eddy.sokomart.navigation.ROUT_ITEM
 
 @Composable
 fun StartScreen(navController: NavController){
@@ -71,7 +72,9 @@ fun StartScreen(navController: NavController){
         Spacer(modifier = Modifier.height(10.dp))
 
 
-        Button(onClick = {},
+        Button(onClick = {
+            navController.navigate(ROUT_ITEM)
+        },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
