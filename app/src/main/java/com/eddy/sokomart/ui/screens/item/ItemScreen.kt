@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
@@ -44,6 +45,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.R
+import com.eddy.sokomart.navigation.ROUT_INTENT
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,8 +82,10 @@ fun ItemScreen(navController: NavController){
                     Icon(imageVector = Icons.Default.Notifications, contentDescription = "")
                 }
 
-                IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Default.Search, contentDescription = "")
+                IconButton(onClick = {
+                    navController.navigate(ROUT_INTENT)
+                }) {
+                    Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "")
                 }
 
             }

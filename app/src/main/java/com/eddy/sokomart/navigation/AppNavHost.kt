@@ -10,6 +10,7 @@ import com.eddy.sokomart.ui.screens.about.AboutScreen
 import com.eddy.sokomart.ui.screens.home.HomeScreen
 import com.eddy.sokomart.ui.screens.intent.IntentScreen
 import com.eddy.sokomart.ui.screens.item.ItemScreen
+import com.eddy.sokomart.ui.screens.more.MoreScreen
 import com.eddy.sokomart.ui.screens.start.StartScreen
 
 @Composable
@@ -38,6 +39,9 @@ fun AppNavHost(
         }
         composable(ROUT_INTENT) {
             IntentScreen(navController)
+        }
+        composable(ROUT_MORE) {
+            MoreScreen(navController)
         }
 
 

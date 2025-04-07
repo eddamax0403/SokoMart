@@ -1,5 +1,7 @@
 package com.eddy.sokomart.ui.screens.intent
 
+import android.content.Intent
+import android.provider.MediaStore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,8 +26,10 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.navigation.ROUT_ITEM
@@ -34,6 +38,10 @@ import com.eddy.sokomart.navigation.ROUT_ITEM
 @Composable
 fun IntentScreen(navController: NavController){
     Column (modifier = Modifier.fillMaxSize()){
+
+        val mContext = LocalContext.current
+
+
         //TopAppbar
         TopAppBar(
             title = {
@@ -71,9 +79,14 @@ fun IntentScreen(navController: NavController){
 
         Spacer(modifier = Modifier.height(10.dp))
 
+
+        //MPESA
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
-        },
+            val simToolKitLaunchIntent =
+                mContext.packageManager.getLaunchIntentForPackage("com.android.stk")
+            simToolKitLaunchIntent?.let { mContext.startActivity(it) }
+
+                         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
@@ -81,10 +94,17 @@ fun IntentScreen(navController: NavController){
             Text(text = "MPESA")
         }
 
+
         Spacer(modifier = Modifier.height(10.dp))
 
+
+        //SMS
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
+            val smsIntent=Intent(Intent.ACTION_SENDTO)
+            smsIntent.data="smsto:0720245837".toUri()
+            smsIntent.putExtra("sms_body","Hello Eddy,how was your day?")
+            mContext.startActivity(smsIntent)
+
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
@@ -93,10 +113,14 @@ fun IntentScreen(navController: NavController){
             Text(text = "SMS")
         }
 
+
         Spacer(modifier = Modifier.height(10.dp))
 
+        //CALL
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
+            val callIntent=Intent(Intent.ACTION_DIAL)
+            callIntent.data="tel:0720245837".toUri()
+            mContext.startActivity(callIntent)
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
@@ -105,10 +129,16 @@ fun IntentScreen(navController: NavController){
             Text(text = "CALL")
         }
 
+
         Spacer(modifier = Modifier.height(10.dp))
 
+
+        //SHARE
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
+            val shareIntent=Intent(Intent.ACTION_SEND)
+            shareIntent.type="text/plain"
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Check out this is a cool content")
+            mContext.startActivity(Intent.createChooser(shareIntent, "Share"))
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
@@ -117,10 +147,19 @@ fun IntentScreen(navController: NavController){
             Text(text = "SHARE")
         }
 
+
         Spacer(modifier = Modifier.height(10.dp))
 
+
+        //CAMERA
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
+            val cameraIntent=Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            if (cameraIntent.resolveActivity(mContext.packageManager)!=null){
+                mContext.startActivity(cameraIntent)
+            }else{
+                println("Camera app is not available")
+            }
+
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
@@ -129,10 +168,18 @@ fun IntentScreen(navController: NavController){
             Text(text = "CAMERA")
         }
 
+
         Spacer(modifier = Modifier.height(10.dp))
 
+
+        //EMAIL
         Button(onClick = {
-            navController.navigate(ROUT_ITEM)
+            val shareIntent = Intent(Intent.ACTION_SEND)
+            shareIntent.type = "text/plain"
+            shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("akinyiglory2@gmail.com"))
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
+            mContext.startActivity(shareIntent)
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
