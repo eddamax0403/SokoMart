@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.ui.screens.about.AboutScreen
+import com.eddy.sokomart.ui.screens.dashboard.DashboardScreen
 import com.eddy.sokomart.ui.screens.home.HomeScreen
 import com.eddy.sokomart.ui.screens.intent.IntentScreen
 import com.eddy.sokomart.ui.screens.item.ItemScreen
@@ -42,6 +43,9 @@ fun AppNavHost(
         }
         composable(ROUT_MORE) {
             MoreScreen(navController)
+        }
+        composable(ROUT_DASHBOARD) {
+            DashboardScreen(navController)
         }
 
 

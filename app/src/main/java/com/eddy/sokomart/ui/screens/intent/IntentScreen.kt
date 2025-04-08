@@ -1,6 +1,7 @@
 package com.eddy.sokomart.ui.screens.intent
 
 import android.content.Intent
+import android.net.Uri
 import android.provider.MediaStore
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Search
@@ -33,6 +35,7 @@ import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.navigation.ROUT_ITEM
+import com.eddy.sokomart.navigation.ROUT_MORE
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -69,8 +72,10 @@ fun IntentScreen(navController: NavController){
                     Icon(imageVector = Icons.Default.Settings, contentDescription = "")
                 }
 
-                IconButton(onClick = {}) {
-                    Icon(imageVector = Icons.Default.Search, contentDescription = "")
+                IconButton(onClick = {
+                    navController.navigate(ROUT_MORE)
+                }) {
+                    Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "")
                 }
 
             }
@@ -101,7 +106,7 @@ fun IntentScreen(navController: NavController){
         //SMS
         Button(onClick = {
             val smsIntent=Intent(Intent.ACTION_SENDTO)
-            smsIntent.data="smsto:0720245837".toUri()
+            smsIntent.data="smsto:0117042224".toUri()
             smsIntent.putExtra("sms_body","Hello Eddy,how was your day?")
             mContext.startActivity(smsIntent)
 
@@ -119,7 +124,7 @@ fun IntentScreen(navController: NavController){
         //CALL
         Button(onClick = {
             val callIntent=Intent(Intent.ACTION_DIAL)
-            callIntent.data="tel:0720245837".toUri()
+            callIntent.data="tel:0117042224".toUri()
             mContext.startActivity(callIntent)
         },
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
@@ -174,13 +179,16 @@ fun IntentScreen(navController: NavController){
 
         //EMAIL
         Button(onClick = {
-            val shareIntent = Intent(Intent.ACTION_SEND)
-            shareIntent.type = "text/plain"
-            shareIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf("akinyiglory2@gmail.com"))
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "subject")
-            shareIntent.putExtra(Intent.EXTRA_TEXT, "Hello, this is the email body")
-            mContext.startActivity(shareIntent)
+            val Intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:")
+                putExtra(Intent.EXTRA_EMAIL, arrayOf("mwanziaedwin5@gmail.com"))
+                putExtra(Intent.EXTRA_SUBJECT,"SUBJECT")
+                putExtra(Intent.EXTRA_TEXT,"Hello,this is the body")
+            }
+            mContext.startActivity(Intent)
+
         },
+
             colors = ButtonDefaults.buttonColors(Color.DarkGray),
             modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
         )
