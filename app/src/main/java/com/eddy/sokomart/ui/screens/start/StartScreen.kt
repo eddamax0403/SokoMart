@@ -47,7 +47,7 @@ fun StartScreen(navController: NavController){
 
 
         Image(
-            painter = painterResource(R.drawable.start),
+            painter = painterResource(R.drawable.fruit),
             contentDescription = "Welcome",
             modifier = Modifier.size(300.dp).clip(shape = CircleShape),
             contentScale = ContentScale.Crop

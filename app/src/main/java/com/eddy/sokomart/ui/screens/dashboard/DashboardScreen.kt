@@ -1,6 +1,7 @@
 package com.eddy.sokomart.ui.screens.dashboard
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,6 +29,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.R
+import com.eddy.sokomart.navigation.ROUT_ABOUT
+import com.eddy.sokomart.navigation.ROUT_HOME
+import com.eddy.sokomart.navigation.ROUT_ITEM
 
 @Composable
 fun DashboardScreen(navController: NavController){
@@ -39,7 +43,7 @@ fun DashboardScreen(navController: NavController){
         Card (
             modifier = Modifier.fillMaxWidth().height(300.dp),
             shape = RoundedCornerShape(bottomStart = 40.dp, bottomEnd = 40.dp),
-            colors = CardDefaults.cardColors(Color.DarkGray)
+            colors = CardDefaults.cardColors(Color.LightGray)
         ){
             Column (
                 modifier = Modifier.fillMaxSize(),
@@ -55,7 +59,7 @@ fun DashboardScreen(navController: NavController){
                 Text(
                     text = "SokoMart",
                     fontSize = 40.sp,
-                    color = Color.White,
+                    color = Color.Black,
                     fontFamily = FontFamily.Cursive,
                     fontWeight = FontWeight.ExtraBold
 
@@ -68,12 +72,13 @@ fun DashboardScreen(navController: NavController){
         Spacer(modifier = Modifier.height(10.dp))
 
         //Row
-        Row (modifier = Modifier.padding(start = 20.dp)){
+        Row (modifier = Modifier.padding(start = 40.dp)){
 
             //CARD
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
-                elevation = CardDefaults.cardElevation(10.dp)
+                modifier = Modifier.width(150.dp).height(180.dp).clickable{navController.navigate(ROUT_HOME)},
+                elevation = CardDefaults.cardElevation(10.dp),
+                colors = CardDefaults.cardColors(Color.LightGray)
             ){
 
                 Column (
@@ -82,20 +87,21 @@ fun DashboardScreen(navController: NavController){
                     verticalArrangement = Arrangement.Center
                 ){
                     Image(
-                        painter = painterResource(R.drawable.fruit),
+                        painter = painterResource(R.drawable.iconhome),
                         contentDescription = "",
                         modifier = Modifier.size(100.dp)                   )
 
-                    Text(text = "Kiwi", fontSize = 15.sp)
+                    Text(text = "Home", fontSize = 15.sp)
                 }
             }
             //END CARD
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(10.dp).clickable{navController.navigate(ROUT_ABOUT)})
 
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
-                elevation = CardDefaults.cardElevation(10.dp)
+                modifier = Modifier.width(150.dp).height(180.dp).padding(start = 15.dp),
+                elevation = CardDefaults.cardElevation(10.dp),
+                colors = CardDefaults.cardColors(Color.LightGray)
             ){
 
                 Column (
@@ -104,11 +110,11 @@ fun DashboardScreen(navController: NavController){
                     verticalArrangement = Arrangement.Center
                 ){
                     Image(
-                        painter = painterResource(R.drawable.fruit),
+                        painter = painterResource(R.drawable.about),
                         contentDescription = "",
                         modifier = Modifier.size(100.dp)                   )
 
-                    Text(text = "Kiwi", fontSize = 15.sp)
+                    Text(text = "About", fontSize = 15.sp)
                 }
             }
 
@@ -119,12 +125,13 @@ fun DashboardScreen(navController: NavController){
 
         //ROW
         //Row
-        Row (modifier = Modifier.padding(start = 20.dp)){
+        Row (modifier = Modifier.padding(start = 40.dp)){
 
             //CARD
             Card (
                 modifier = Modifier.width(150.dp).height(180.dp),
-                elevation = CardDefaults.cardElevation(10.dp)
+                elevation = CardDefaults.cardElevation(10.dp),
+                colors = CardDefaults.cardColors(Color.LightGray)
             ){
 
                 Column (
@@ -133,11 +140,11 @@ fun DashboardScreen(navController: NavController){
                     verticalArrangement = Arrangement.Center
                 ){
                     Image(
-                        painter = painterResource(R.drawable.fruit),
+                        painter = painterResource(R.drawable.contact),
                         contentDescription = "",
                         modifier = Modifier.size(100.dp)                   )
 
-                    Text(text = "Kiwi", fontSize = 15.sp)
+                    Text(text = "Contacts", fontSize = 15.sp)
                 }
             }
             //END CARD
@@ -145,8 +152,11 @@ fun DashboardScreen(navController: NavController){
             Spacer(modifier = Modifier.height(10.dp))
 
             Card (
-                modifier = Modifier.width(150.dp).height(180.dp),
-                elevation = CardDefaults.cardElevation(10.dp)
+                modifier = Modifier.width(150.dp).height(180.dp).padding(start = 20.dp).clickable{navController.navigate(
+                    ROUT_ITEM
+                )},
+                elevation = CardDefaults.cardElevation(10.dp),
+                colors = CardDefaults.cardColors(Color.LightGray)
             ){
 
                 Column (
@@ -155,11 +165,11 @@ fun DashboardScreen(navController: NavController){
                     verticalArrangement = Arrangement.Center
                 ){
                     Image(
-                        painter = painterResource(R.drawable.fruit),
+                        painter = painterResource(R.drawable.product),
                         contentDescription = "",
-                        modifier = Modifier.size(150.dp)                   )
+                        modifier = Modifier.size(100.dp)                   )
 
-                    Text(text = "Kiwi", fontSize = 15.sp)
+                    Text(text = "Products", fontSize = 15.sp)
                 }
             }
 

@@ -94,7 +94,7 @@ fun ItemScreen(navController: NavController){
 
         Column (modifier = Modifier.verticalScroll(rememberScrollState())){
             Image(
-                painter = painterResource(R.drawable.item),
+                painter = painterResource(R.drawable.fruit),
                 contentDescription = "Item",
                 modifier = Modifier.fillMaxWidth().height(540.dp).verticalScroll(rememberScrollState()),
                 contentScale = ContentScale.FillWidth

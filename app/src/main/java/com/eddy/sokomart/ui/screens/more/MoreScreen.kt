@@ -152,7 +152,7 @@ fun MoreScreen(navController: NavController){
             //COLUMN
             Column (horizontalAlignment = Alignment.CenterHorizontally){
                 Image(
-                    painter = painterResource(R.drawable.car),
+                    painter = painterResource(R.drawable.fruit),
                     contentDescription = "",
                     modifier = Modifier.size(250.dp).clip(shape = RoundedCornerShape(10.dp)),
                     contentScale = ContentScale.Fit
@@ -183,7 +183,7 @@ fun MoreScreen(navController: NavController){
             //COLUMN
             Column (horizontalAlignment = Alignment.CenterHorizontally){
                 Image(
-                    painter = painterResource(R.drawable.car),
+                    painter = painterResource(R.drawable.fruit),
                     contentDescription = "",
                     modifier = Modifier.size(250.dp).clip(shape = RoundedCornerShape(10.dp)),
                     contentScale = ContentScale.Fit
@@ -213,7 +213,7 @@ fun MoreScreen(navController: NavController){
             //COLUMN
             Column (horizontalAlignment = Alignment.CenterHorizontally){
                 Image(
-                    painter = painterResource(R.drawable.car),
+                    painter = painterResource(R.drawable.fruit),
                     contentDescription = "",
                     modifier = Modifier.size(250.dp).clip(shape = RoundedCornerShape(10.dp)),
                     contentScale = ContentScale.Fit

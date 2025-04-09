@@ -12,13 +12,14 @@ import com.eddy.sokomart.ui.screens.home.HomeScreen
 import com.eddy.sokomart.ui.screens.intent.IntentScreen
 import com.eddy.sokomart.ui.screens.item.ItemScreen
 import com.eddy.sokomart.ui.screens.more.MoreScreen
+import com.eddy.sokomart.ui.screens.service.ServiceScreen
 import com.eddy.sokomart.ui.screens.start.StartScreen
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_START
+    startDestination: String = ROUT_SERVICE
 ) {
 
     NavHost(
@@ -46,6 +47,9 @@ fun AppNavHost(
         }
         composable(ROUT_DASHBOARD) {
             DashboardScreen(navController)
+        }
+        composable(ROUT_SERVICE) {
+            ServiceScreen(navController)
         }
 
 
