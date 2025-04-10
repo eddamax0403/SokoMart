@@ -7,19 +7,21 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.ui.screens.about.AboutScreen
+import com.eddy.sokomart.ui.screens.assign.AssignScreen
 import com.eddy.sokomart.ui.screens.dashboard.DashboardScreen
 import com.eddy.sokomart.ui.screens.home.HomeScreen
 import com.eddy.sokomart.ui.screens.intent.IntentScreen
 import com.eddy.sokomart.ui.screens.item.ItemScreen
 import com.eddy.sokomart.ui.screens.more.MoreScreen
 import com.eddy.sokomart.ui.screens.service.ServiceScreen
+import com.eddy.sokomart.ui.screens.splash.SplashScreen
 import com.eddy.sokomart.ui.screens.start.StartScreen
 
 @Composable
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_SERVICE
+    startDestination: String = ROUT_SPLASH
 ) {
 
     NavHost(
@@ -50,6 +52,12 @@ fun AppNavHost(
         }
         composable(ROUT_SERVICE) {
             ServiceScreen(navController)
+        }
+        composable(ROUT_SPLASH) {
+            SplashScreen(navController)
+        }
+        composable(ROUT_ASSIGN) {
+            AssignScreen(navController)
         }
 
 
