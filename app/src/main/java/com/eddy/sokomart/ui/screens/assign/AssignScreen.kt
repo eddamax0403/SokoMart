@@ -1,5 +1,6 @@
 package com.eddy.sokomart.ui.screens.assign
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -39,6 +41,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,6 +49,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.eddy.sokomart.R
 import com.eddy.sokomart.navigation.ROUT_HOME
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -188,7 +192,8 @@ fun AssignScreen(navController: NavController){
                 }
 
                 Column (
-                    modifier = Modifier.padding(top = 30.dp).verticalScroll(rememberScrollState())
+                    modifier = Modifier.padding(top = 30.dp).verticalScroll(rememberScrollState(),
+                    )
 
                 ){
 
@@ -199,17 +204,26 @@ fun AssignScreen(navController: NavController){
                     Card (
                         modifier = Modifier.width(300.dp).height(90.dp),
                         elevation = CardDefaults.cardElevation(10.dp),
-                        colors = CardDefaults.cardColors(Color.LightGray)
+                        colors = CardDefaults.cardColors(Color.White)
                     ){
                         Column (){
-                            Text(
-                                text = "NDA Review for website project",
-                                fontWeight = FontWeight.Bold
-                            )
-                            Spacer(modifier = Modifier.height(5.dp))
-                            Text(
-                                text = "Today-10pm"
-                            )
+                            Row (){
+
+                                Image(
+                                    painter = painterResource(R.drawable.video),
+                                    contentDescription = "",
+                                    modifier = Modifier.size(30.dp)                   )
+
+                                Text(
+                                    text = "NDA Review for website project",
+                                    modifier = Modifier,
+                                    textAlign = TextAlign.Center
+                                )
+                                Spacer(modifier = Modifier.height(5.dp))
+                                Text(
+                                    text = "Today-10pm"
+                                )
+                            }
                         }
                     }
 
@@ -221,13 +235,21 @@ fun AssignScreen(navController: NavController){
                         colors = CardDefaults.cardColors(Color.LightGray)
                     ){
                         Column (){
-                            Text(
-                                text = "Email Reply for Green Project",
-                            )
-                            Spacer(modifier = Modifier.height(5.dp))
-                            Text(
-                                text = "Today-10pm"
-                            )
+                           Row (){
+
+                               Image(
+                                   painter = painterResource(R.drawable.email),
+                                   contentDescription = "",
+                                   modifier = Modifier.size(30.dp)                   )
+
+                               Text(
+                                   text = "Email Reply for Green Project",
+                               )
+                               Spacer(modifier = Modifier.height(5.dp))
+                               Text(
+                                   text = "Today-10pm"
+                               )
+                           }
                         }
                     }
 

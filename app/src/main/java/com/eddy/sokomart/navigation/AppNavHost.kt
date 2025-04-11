@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.ui.screens.about.AboutScreen
 import com.eddy.sokomart.ui.screens.assign.AssignScreen
 import com.eddy.sokomart.ui.screens.dashboard.DashboardScreen
+import com.eddy.sokomart.ui.screens.form.FormScreen
 import com.eddy.sokomart.ui.screens.home.HomeScreen
 import com.eddy.sokomart.ui.screens.intent.IntentScreen
 import com.eddy.sokomart.ui.screens.item.ItemScreen
@@ -58,6 +59,9 @@ fun AppNavHost(
         }
         composable(ROUT_ASSIGN) {
             AssignScreen(navController)
+        }
+        composable(ROUT_FORM) {
+            FormScreen(navController)
         }
 
 
