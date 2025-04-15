@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.eddy.sokomart.R
 import com.eddy.sokomart.navigation.ROUT_DASHBOARD
+import com.eddy.sokomart.navigation.ROUT_LOGIN
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -32,10 +33,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun SplashScreen(navController: NavController){
 
+    //NAVIGATION FROM SPLASH
     val coroutine = rememberCoroutineScope()
     coroutine.launch {
         delay(1000)
-        navController.navigate(ROUT_DASHBOARD)
+        navController.navigate(ROUT_LOGIN)
     }
 
 
