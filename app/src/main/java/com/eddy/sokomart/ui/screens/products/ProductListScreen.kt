@@ -43,6 +43,7 @@ import com.eddy.sokomart.model.Product
 import com.eddy.sokomart.navigation.ROUT_ADD_PRODUCT
 import com.eddy.sokomart.navigation.ROUT_EDIT_PRODUCT
 import com.eddy.sokomart.navigation.ROUT_PRODUCT_LIST
+import com.eddy.sokomart.navigation.editProductRoute
 import java.io.IOException
 import java.io.OutputStream
 
@@ -229,7 +230,7 @@ fun ProductItem(navController: NavController, product: Product, viewModel: Produ
                     // Edit Product
                     IconButton(
                         onClick = {
-                            navController.navigate(ROUT_EDIT_PRODUCT)
+                            navController.navigate(editProductRoute(product.id))
                         }
                     ) {
                         Icon(

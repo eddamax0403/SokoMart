@@ -39,7 +39,7 @@ import com.eddy.sokomart.viewmodel.ProductViewModel
 fun AppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = ROUT_SPLASH,
+    startDestination: String = ROUT_ADD_PRODUCT,
     productViewModel: ProductViewModel = viewModel(),
 ) {
 
